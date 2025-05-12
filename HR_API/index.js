@@ -237,6 +237,14 @@ app.get('/Q59', async (req, res) => {
         res.status(500).json({Error: error.message})
     }
 })
+app.get('/COUNTRY', async (req, res) => {
+    try{
+        const result = await pool.query('select * from countries ;')
+        res.json(result.rows);
+    } catch(error) {
+        res.status(500).json({Error: error.message})
+    }
+})
 
 app.get('/Q60', async (req, res) => {
     try{
@@ -400,6 +408,16 @@ app.get('/Q4', async (req, res) => {
         res.status(500).json({Error: error.message})
     }
 })
+
+app.get('/EMPLOYEE', async (req, res) => {
+    try{
+        const result = await pool.query(' select * from employees;')
+        res.json(result.rows);
+    } catch(error) {
+        res.status(500).json({Error: error.message})
+    }
+})
+
 
 const port = process.env.PORT;
 
