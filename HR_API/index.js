@@ -25,7 +25,7 @@ app.get('/emp', async (req, res) => {
     }
 })
 
-app.get('/emp-count', async (req, res) => {
+app.get('/TotalEmployee', async (req, res) => {
     try{
         const result = await pool.query('SELECT COUNT(*) FROM employees')
         res.json(result.rows);
@@ -36,6 +36,43 @@ app.get('/emp-count', async (req, res) => {
 app.get('/TotalDepartment', async (req, res) => {
     try{
         const result = await pool.query('SELECT COUNT(*) FROM departments')
+        res.json(result.rows);
+    } catch(error) {
+        res.status(500).json({Error: error.message})
+    }
+})
+
+app.get('/TotalCountry', async (req, res) => {
+    try{
+        const result = await pool.query('SELECT COUNT(*) FROM countries')
+        res.json(result.rows);
+    } catch(error) {
+        res.status(500).json({Error: error.message})
+    }
+})
+
+
+app.get('/TotalRegion', async (req, res) => {
+    try{
+        const result = await pool.query('SELECT COUNT(*) FROM Regions')
+        res.json(result.rows);
+    } catch(error) {
+        res.status(500).json({Error: error.message})
+    }
+})
+
+app.get('/TotalJob', async (req, res) => {
+    try{
+        const result = await pool.query('SELECT COUNT(*) FROM Jobs')
+        res.json(result.rows);
+    } catch(error) {
+        res.status(500).json({Error: error.message})
+    }
+})
+
+app.get('/TotalLocation', async (req, res) => {
+    try{
+        const result = await pool.query('SELECT COUNT(*) FROM Locations')
         res.json(result.rows);
     } catch(error) {
         res.status(500).json({Error: error.message})
